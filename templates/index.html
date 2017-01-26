@@ -41,19 +41,33 @@
         }
         
         .jumbotron {
-            background-color: lightpink;
+            background:rgba(0,0,0,0.5);
             -webkit-apperance: none;
             appearance: none;
             width: 50%;
             margin-bottom: 10px;
         }
+    
+        .jumbotron p {
+            margin-top: 5rem;
+            color: white;
+        }
+        
+        h3 {
+            color: white;
+        }
+        
     </style>
 
 
 </head>
 
+{% if img %}
 
+<body background='{{ img.display_sizes[0].uri }}'>
+{% else %}
 <body>
+{% endif %}
     <div class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -70,8 +84,8 @@
             <div class="jumbotron col-md-8 col-md-offset-3">
                 {% if token %}
 
-                <p>{{ token.statuses[0].text }}</p>
-                <p>{{ token.statuses[0].user.name}}</p>
+                <h3>{{ token.text }}</h3>
+                <p class="pull-right">- {{ token.user.name}}</p>
                 {% else %}
 
                 <p>Quotes...</p>
@@ -80,6 +94,8 @@
         </div>
     </div>
 
+    <!--Latest stable -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
 </body>
 
 </html>

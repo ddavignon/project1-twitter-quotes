@@ -1,12 +1,17 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 import urllib3, json, base64
+import random
 
 app = Flask(__name__)
 
 
+search_term = 'marijuana';
+
+
 def twitterApiData():
     
+    # api keys
     CONSUMER_KEY = 'nicys670TghYuxNKJbrFHA8Yt'
     CONSUMER_SECRET = 'jyn2MvSLxvG7XdjQuYFomZ808GSbjs2r4it8XH5Df6G7ogwOVA'
     ACCESS_TOKEN = '800599760902045696-782ZftuV0oe8aCMZ2qbsmtB0GnB5c9K'
@@ -34,7 +39,7 @@ def twitterApiData():
     #url='https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=ProgrammableWeb'
     
     # Set variable for search
-    url='https://api.twitter.com/1.1/search/tweets.json?q=%23trump'
+    url='https://api.twitter.com/1.1/search/tweets.json?q=%23' + search_term
     
     # Set the Authorization header using the value of the access_token key from the app_token dictionary created above
     http_header={'Authorization': 'Bearer %s' % app_token ['access_token']}
@@ -42,13 +47,37 @@ def twitterApiData():
     # Send the request
     response = manager.urlopen('GET', url , headers=http_header) 
     
-    # Read the response, create dictionary and render HTML using data and template
-    return json.loads(response.data)
+   #print json.loads(response.data)['statuses'][random.randint(0,len(json.loads(response.data)['statuses']) )]
+        
+    return json.loads(response.data)['statuses'][random.randint(0,len(json.loads(response.data)['statuses']) )]
+
+
+def gettyApiImage():
+        # api keys
+    API_KEY = 'f9m9s47sgubqb62d3bnwt5qj'
+
+    # # Create a HTTP connection pool manager
+    manager = urllib3.PoolManager()
     
+    # Set variable for search
+    url='https://api.gettyimages.com/v3/search/images?phrase=' + search_term
+    
+    # Set the Authorization header using the value of the access_token key from the app_token dictionary created above
+    http_header={'Api-Key': API_KEY}
+    
+    # Send the request
+    response = manager.urlopen('GET', url , headers=http_header) 
+    
+    # Read the response, create dictionary and render HTML using data and template
+    
+    #print json.loads(response.data)['images'][random.randint(0, len(json.loads(response.data)['images']))]
+
+    return json.loads(response.data)['images'][random.randint(0, len(json.loads(response.data)['images']))]
+
 
 @app.route('/')
 def hello():
-    return render_template('index.html',token=twitterApiData())
+    return render_template('index.html', token=twitterApiData(), img=gettyApiImage())
     
 
 app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT', 8080)))
