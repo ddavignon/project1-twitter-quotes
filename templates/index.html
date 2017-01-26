@@ -63,11 +63,11 @@
 </head>
 
 {% if img %}
-
 <body background='{{ img.display_sizes[0].uri }}'>
 {% else %}
 <body>
 {% endif %}
+
     <div class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -79,17 +79,16 @@
     </div>
 
     <div id="wrapper">
-
         <div class="container-fluid text-center">
             <div class="jumbotron col-md-8 col-md-offset-3">
+                
                 {% if token %}
-
                 <h3>{{ token.text }}</h3>
                 <p class="pull-right">- {{ token.user.name}}</p>
                 {% else %}
-
                 <p>Quotes...</p>
                 {% endif %}
+                
             </div>
         </div>
     </div>

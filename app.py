@@ -6,7 +6,7 @@ import random
 app = Flask(__name__)
 
 
-search_term = 'marijuana';
+search_term = 'dapl';
 
 
 def twitterApiData():
