@@ -35,9 +35,6 @@ def twitterApiData():
     # Read the response as JSON
     app_token = json.loads(response.data) 
     
-    # Set the variable to the ProgrammableWeb timeline
-    #url='https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=ProgrammableWeb'
-    
     # Set variable for search
     url='https://api.twitter.com/1.1/search/tweets.json?q=%23' + search_term
     
@@ -69,8 +66,6 @@ def gettyApiImage():
     response = manager.urlopen('GET', url , headers=http_header) 
     
     # Read the response, create dictionary and render HTML using data and template
-    
-    #print json.loads(response.data)['images'][random.randint(0, len(json.loads(response.data)['images']))]
 
     return json.loads(response.data)['images'][random.randint(0, len(json.loads(response.data)['images']))]
 
