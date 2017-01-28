@@ -5,10 +5,8 @@ import random
 
 app = Flask(__name__)
 
-
 phrase = 'cute puppies'
 search_term = phrase.replace(' ', '%20').lower()
-
 
 def twitterApiData():
     
