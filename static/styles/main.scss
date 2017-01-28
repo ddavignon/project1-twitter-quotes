@@ -1,0 +1,60 @@
+$hover-text-color: black;
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: center;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+#wrapper {
+    display: flex;
+    min-height: 75vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    /*flex-direction: column;*/
+}
+
+.jumbotron {
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-apperance: none;
+    appearance: none;
+    width: 50%;
+    margin-bottom: 10px;
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.50), 0 15px 40px rgba(255, 255, 255, 0.42);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    font-family: 'IM Fell Double Pica', serif;
+    overflow-x: hidden;
+    color: white;
+}
+
+.jumbotron p {
+    margin-top: 5rem;
+    color: white;
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+.jumbotron:hover {
+    background: white;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.80), 0 25px 60px rgba(0, 0, 0, 0.72);
+    color: $hover-text-color;
+    margin-bottom: 50px;
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-size: xx-large;
+}
+
+.jumbotron:hover h3 {
+    color: $hover-text-color;
+}
+
+.jumbotron:hover p {
+    color: $hover-text-color;
+}
+ 

@@ -22,43 +22,10 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <style type="text/css">
-        body {
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: center;
-        }
-        
-        #wrapper {
-            display: flex;
-            min-height: 75vh;
-            width: 100%;
-            padding: 0;
-            margin: 0;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        
-        .jumbotron {
-            background:rgba(0,0,0,0.5);
-            -webkit-apperance: none;
-            appearance: none;
-            width: 50%;
-            margin-bottom: 10px;
-        }
-    
-        .jumbotron p {
-            margin-top: 5rem;
-            color: white;
-        }
-        
-        h3 {
-            color: white;
-        }
-        
-    </style>
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=IM+Fell+Double+Pica|Oleo+Script+Swash+Caps" rel="stylesheet">
 
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
 
 </head>
 
@@ -68,27 +35,31 @@
 <body>
 {% endif %}
 
-    <div class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <div class="navbar-brand">
-                    Project 1
-                </div>
-            </div>
-        </div>
-    </div>
+    <!--<div class="navbar navbar-inverse">-->
+    <!--    <div class="container-fluid">-->
+    <!--        <div class="navbar-header">-->
+    <!--            <div class="navbar-brand">-->
+    <!--                Project 1-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</div>-->
 
     <div id="wrapper">
-        <div class="container-fluid text-center">
-            <div class="jumbotron col-md-8 col-md-offset-3">
-                
-                {% if token %}
-                <h3>{{ token.text }}</h3>
-                <p class="pull-right">- {{ token.user.name}}</p>
-                {% else %}
-                <p>Quotes...</p>
-                {% endif %}
-                
+        <div class="container text-center">
+            <div class="jumbotron">
+                <div class="row">
+                    
+                    {% if tweet %}
+                    <h3>{{ tweet.text }}</h3>
+                    <p class="pull-left"><a href='{{ tweet.username }}'>{{ tweet.username }}</a></a>
+                    </p>
+                    <p class="pull-right">- {{ tweet.user.name }}</p>
+                    {% else %}
+                    <p>There was an error fetching the request! Please try again...</p>
+                    {% endif %}
+                    
+                </div>
             </div>
         </div>
     </div>
