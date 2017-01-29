@@ -11,10 +11,8 @@ search_term = phrase.replace(' ', '%20').lower()
 def twitterApiData():
     
     # api keys
-    CONSUMER_KEY = 'nicys670TghYuxNKJbrFHA8Yt'
-    CONSUMER_SECRET = 'jyn2MvSLxvG7XdjQuYFomZ808GSbjs2r4it8XH5Df6G7ogwOVA'
-    ACCESS_TOKEN = '800599760902045696-782ZftuV0oe8aCMZ2qbsmtB0GnB5c9K'
-    ACCESS_SECRET = 'AY1y2y7NAqJzOXFOJZuZXL5HQQtNbSQPzVx8zkAXxULVF'
+    CONSUMER_KEY = os.environ['CONSUMER_KEY']
+    CONSUMER_SECRET = os.environ['CONSUMER_SECRET']
 
     # Create a HTTP connection pool manager
     manager = urllib3.PoolManager()
@@ -47,7 +45,7 @@ def twitterApiData():
 def gettyApiImage():
     
     # api keys
-    API_KEY = 'f9m9s47sgubqb62d3bnwt5qj'
+    API_KEY = os.environ['API_KEY']
 
     # # Create a HTTP connection pool manager
     manager = urllib3.PoolManager()
