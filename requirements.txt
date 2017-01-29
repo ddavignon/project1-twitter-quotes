@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Flask==0.12
 Jinja2==2.9.4
 gunicorn==19.6.0
 urllib3==1.7.1
+=======
+Flask==0.12
+>>>>>>> 7867a2809b4fea34d485b722bee8c626df6d2999
