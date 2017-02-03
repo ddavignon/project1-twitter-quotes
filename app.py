@@ -32,7 +32,7 @@ def twitterApiData():
     # Set the Authorization header using the value of the access_token key from the app_token dictionary created above
     http_header={'Authorization': 'Bearer %s' % app_token ['access_token']}
     # Send the request
-    response = manager.urlopen('GET', url , headers=http_header) 
+    response = manager.urlopen('GET', url , headers=http_header)  
         
     try:
         tweet = json.loads(response.data)['statuses'][random.randint(0,len(json.loads(response.data)['statuses']) )]
@@ -75,5 +75,7 @@ def favicon():
                                'favicon.ico', mimetype='image/png')
 
 if __name__ == "__main__":
-#app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT', 8080)), debug=True)
-    app.run()
+    app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT', 8080)), debug=True)
+    
+    #switch for deploy to heroku
+    #app.run()

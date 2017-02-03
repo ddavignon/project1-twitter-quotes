@@ -55,12 +55,16 @@
                     
                     {% if tweet %}
                     <h3>{{ tweet.text }}</h3>
-                    <p class="pull-left"><a href='{{ tweet.username }}'>{{ tweet.username }}</a></a>
-                    </p>
                     <p class="pull-right">- {{ tweet.user.name }}</p>
                     {% else %}
                     <p>There was an error fetching the request! Please try again...</p>
                     {% endif %}
+                    
+                    <!--{% if tweet.entities.urls[0] %}-->
+                    <!--<p class="pull-left"><a href="{{ tweet.entities.urls[0].url }}" target=_blank>{{ tweet.entities.urls[0].url }}</a></a></p>-->
+                    <!--{% else %}-->
+                    <!--<p>No url provided for this quote :(</p>-->
+                    <!--{% endif %}-->
                     
                 </div>
             </div>
