@@ -5,7 +5,7 @@ import random
 
 app = Flask(__name__)
 
-phrase = 'cute puppies'
+phrase = 'puppies'
 search_term = phrase.replace(' ', '%20').lower()
 
 def twitterApiData():
@@ -34,10 +34,14 @@ def twitterApiData():
     # Send the request
     response = manager.urlopen('GET', url , headers=http_header)  
         
-    try:
-        tweet = json.loads(response.data)['statuses'][random.randint(0,len(json.loads(response.data)['statuses']) )]
-    except:
-        tweet = ""
+    tweetFound = False
+    
+    while not tweetFound:
+        try:
+            tweet = json.loads(response.data)['statuses'][random.randint(0,len(json.loads(response.data)['statuses']) )]
+            tweetFound = True
+        except:
+            tweet = ""
         
     return tweet
 
@@ -56,11 +60,14 @@ def gettyApiImage():
     # Send the request
     response = manager.urlopen('GET', url , headers=http_header) 
     
-    # Read the response, create dictionary and render HTML using data and template
-    try:
-        image = json.loads(response.data)['images'][random.randint(0, len(json.loads(response.data)['images']))]
-    except:
-        image = ""
+    imageFound = False
+    
+    while not imageFound:
+        try:
+            image = json.loads(response.data)['images'][random.randint(0, len(json.loads(response.data)['images']))]
+            imageFound = True
+        except:
+            image = ""
     
     return image
 

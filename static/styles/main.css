@@ -38,7 +38,6 @@ body {
   background: white;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 25px 60px rgba(0, 0, 0, 0.72);
   color: black;
-  margin-bottom: 50px;
   font-family: 'Oleo Script Swash Caps', cursive;
   font-size: xx-large; }
 
@@ -47,5 +46,11 @@ body {
 
 .jumbotron:hover p {
   color: black; }
+
+.jumbotron:hover a {
+  color: blue; }
+
+a {
+  color: white; }
 
 /*# sourceMappingURL=main.css.map */
